@@ -29,6 +29,7 @@ const App = () => {
         />
       </Stack.Navigator>
     </NavigationContainer>
+    // <Text>Hi</Text>
   );
 };
 

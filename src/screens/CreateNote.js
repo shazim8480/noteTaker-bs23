@@ -1,4 +1,4 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {Text, View} from 'react-native';
 import React, {useState} from 'react';
 import Button from '../components/Button';
 
@@ -8,9 +8,9 @@ const CreateNote = () => {
   const [content, setContent] = useState('');
 
   const handleSaveNote = () => {
-    setNotes([...notes, {title, content}]);
-    setTitle('');
-    setContent('');
+    const updatedNotes = [...notes, {title, content}];
+    setNotes(updatedNotes);
+    navigation.navigate('NotesList');
   };
 
   return (
@@ -29,11 +29,9 @@ const CreateNote = () => {
         value={content}
         onChangeText={setContent}
       />
-      <Button title="Save Note" onPress={handleSaveNote} />
+      <Button title="Save Note" onPress={() => handleSaveNote()} />
     </RootView>
   );
 };
 
 export default CreateNote;
-
-const styles = StyleSheet.create({});

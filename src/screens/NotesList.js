@@ -1,26 +1,29 @@
-import {FlatList, StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
 import React, {useEffect, useState} from 'react';
 
 import RootView from '../components/Root';
 import Button from '../components/Button';
 
 const NotesList = () => {
-  const [notes, setNotes] = useState([]);
+  const [notes, setNotes] = useState([
+    {title: 'Sample Note 1', content: 'This is some sample content.'},
+    {title: 'Sample Note 2', content: 'This is another sample content.'},
+  ]);
 
   // Fetch notes on screen mount
-  useEffect(() => {
-    const savedNotes = [
-      {title: 'Sample Note 1', content: 'This is some sample content.'},
-    ];
-    setNotes(savedNotes);
-  }, []);
+  //   useEffect(() => {
+  //     let savedNotes = [
+  //       {title: 'Sample Note 1', content: 'This is some sample content.'},
+  //       {title: 'Sample Note 2', content: 'This is another sample content.'},
+  //     ];
+  //     setNotes(savedNotes);
+  //   }, [notes]);
 
   const handleDeleteNote = index => {
-    const updatedNotes = notes.filter((_, i) => i !== index);
-    setNotes(updatedNotes);
+    setNotes(notes?.filter((_, i) => i !== index));
   };
 
-  const renderNoteItem = ({item, index}) => (
+  const NoteItem = ({item, index}) => (
     <View
       style={{
         borderWidth: 1,
@@ -29,28 +32,25 @@ const NotesList = () => {
         backgroundColor: 'white',
         borderRadius: 6,
       }}>
-      <Text style={{fontSize: 16, fontWeight: 'bold'}}>{item.title}</Text>
-      <Text>{item.content}</Text>
+      <Text style={{fontSize: 16, fontWeight: 'bold'}}>{item?.title}</Text>
+      <Text>{item?.content}</Text>
       <Button
         title="Delete Note"
         variant="delete"
-        onPress={handleDeleteNote(index)}
+        onPress={() => handleDeleteNote(index)}
       />
     </View>
   );
 
   return (
     <RootView>
-      {notes?.length > 0 ? (
-        <Text style={{marginTop: 20}}>Saved Notes:</Text>
-      ) : (
-        <Text>No notes available..</Text>
-      )}
+      {notes?.map((item, index) => {
+        return <NoteItem item={item} key={index} />;
+      })}
 
-      <FlatList
-        data={notes}
-        renderItem={renderNoteItem}
-        keyExtractor={(item, index) => index.toString()}
+      <Button
+        title={'Create a Note'}
+        onPress={() => navigation.navigate('CreateNote')}
       />
     </RootView>
   );
