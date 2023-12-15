@@ -29,13 +29,13 @@ const NotesList = () => {
         backgroundColor: 'white',
         borderRadius: 6,
       }}>
-      <Text style={{fontSize: 18, fontWeight: 'bold'}}>{item.title}</Text>
+      <Text style={{fontSize: 16, fontWeight: 'bold'}}>{item.title}</Text>
       <Text>{item.content}</Text>
-      {/* <Button
+      <Button
         title="Delete Note"
         variant="delete"
-        onPress={() => handleDeleteNote(index)}
-      /> */}
+        onPress={handleDeleteNote(index)}
+      />
     </View>
   );
 
