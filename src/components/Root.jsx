@@ -1,8 +1,8 @@
-import {StyleSheet, Text, ScrollView} from 'react-native';
+import {StyleSheet, Text, ScrollView, View} from 'react-native';
 import React from 'react';
 
 const RootView = ({children}) => {
-  return <ScrollView style={styles.screen}>{children}</ScrollView>;
+  return <View style={styles.screen}>{children}</View>;
 };
 
 export default RootView;

@@ -19,41 +19,30 @@ import CreateNote from './src/screens/CreateNote';
 
 const Stack = createNativeStackNavigator();
 
-function HomeScreen() {
-  return (
-    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-      <Text>Home Screen</Text>
-    </View>
-  );
-}
-
 const App = () => {
   return (
-    // <SafeAreaView>
-    //   <StatusBar
-    //   // backgroundColor={backgroundStyle.backgroundColor}
-    //   />
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen
-          options={{
-            headerShown: false,
-          }}
-          name="NotesList"
-          component={NotesList}
-        />
-        <Stack.Screen
-          options={{
-            headerShown: false,
-          }}
-          name="CreateNote"
-          component={CreateNote}
-        />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <>
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen
+            options={{
+              headerShown: false,
+            }}
+            name="NotesList"
+            component={NotesList}
+          />
+          <Stack.Screen
+            options={{
+              headerShown: false,
+            }}
+            name="CreateNote"
+            component={CreateNote}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
+      <Text>Hi</Text>
+    </>
   );
 };
-
-const styles = StyleSheet.create({});
 
 export default App;
