@@ -14,7 +14,7 @@ npx react-native run-android
 
 ### Features:
 Create new notes with titles and content.
-View a list of existing notes.
+View a list of existing notes, can delete notes.
 
 ### Technologies Used:
 React Native
